@@ -72,30 +72,47 @@ Total number of rows with NAs are `r tna`
 
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-```{r}
+Replace NA with the mean for that 5-minute interval
 
-
-```
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
 
 ```{r}
-
-
+data[is.na(data$steps), "steps"] <- tapply(data$steps, data$interval, mean, na.rm=T)[as.character(data[is.na(data$steps), "interval"])]
 ```
 
 4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
 ```{r}
-
-
+s3 <- with(data, tapply(steps, date, sum))
+barplot(s3)
+s4 <- with(data, tapply(steps, date, mean))
+s4
+s5 <- with(data, tapply(steps, date, median))
+s5
 ```
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
 
+1. Create a new factor variable in the dataset with two levels – “weekday” and “weekend” indicating whether a given date is a weekday or weekend day.
 
+```{r}
+lct = Sys.getlocale("LC_TIME")
+Sys.setlocale("LC_TIME","en_US")
+data$weekday <- weekdays(strptime(data$date, "%Y-%m-%d"))
+data$wend <- as.factor(ifelse(data$weekday %in% c("Saturday", "Sunday"), "Weekend", "Weekday"))
+Sys.setlocale("LC_TIME", lct)
+```
 
+2.Make a panel plot containing a time series plot (i.e. type = "l") of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis). The plot should look something like the following, which was creating using simulated data:
 
+```{r, fig.height= 10}
+library(lattice)
+xyplot(data$steps ~ data$interval | data$wend, layout = c(1,2), panel = function(x,y,...) {
+panel.xyplot(x,y, type="l",...)
+panel.abline(h=mean(y, na.rm=T), lty= 2, col= "red")
+})
 
+```
 
