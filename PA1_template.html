@@ -139,7 +139,7 @@ g + geom_line() + facet_wrap(~date, ncol = 14)  + coord_fixed(ratio=10) + geom_l
 i &lt;- with(data, tapply(steps, interval, mean, na.rm=TRUE))
 p &lt;- i[which.max(i)]
 n &lt;- names(which.max(i))</code></pre>
-<p>The 5-minute interval 835 contain the maximum number of steps 206.1698</p>
+<p><strong>The 5-minute interval 835 contain the maximum number of steps 206.1698 </strong></p>
 </div>
 <div id="imputing-missing-values" class="section level2">
 <h2>Imputing missing values</h2>
@@ -147,11 +147,11 @@ n &lt;- names(which.max(i))</code></pre>
 <li>Calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)</li>
 </ol>
 <pre class="r"><code>tna &lt;- sum(is.na(data$steps))</code></pre>
-<p>Total number of rows with NAs are 2304</p>
+<p><strong>Total number of rows with NAs are 2304 </strong></p>
 <ol start="2" style="list-style-type: decimal">
 <li>Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.</li>
 </ol>
-<p>Replace NA with the mean for that 5-minute interval</p>
+<p><strong>Replace NA with the mean for that 5-minute interval</strong></p>
 <ol start="3" style="list-style-type: decimal">
 <li>Create a new dataset that is equal to the original dataset but with the missing data filled in.</li>
 </ol>

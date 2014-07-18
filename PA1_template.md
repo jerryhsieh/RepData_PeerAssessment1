@@ -111,7 +111,7 @@ p <- i[which.max(i)]
 n <- names(which.max(i))
 ```
 
-The 5-minute interval 835 contain the maximum number of steps 206.1698
+**The 5-minute interval 835 contain the maximum number of steps 206.1698 **
 
 
 ## Imputing missing values
@@ -123,12 +123,12 @@ The 5-minute interval 835 contain the maximum number of steps 206.1698
 tna <- sum(is.na(data$steps))
 ```
 
-Total number of rows with NAs are 2304
+**Total number of rows with NAs are 2304 **
 
 
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
-Replace NA with the mean for that 5-minute interval
+**Replace NA with the mean for that 5-minute interval**
 
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
