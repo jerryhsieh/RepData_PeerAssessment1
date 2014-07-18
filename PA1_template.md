@@ -128,6 +128,7 @@ Total number of rows with NAs are 2304
 
 2. Devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated. For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 
+Replace NA with the mean for that 5-minute interval
 
 
 3. Create a new dataset that is equal to the original dataset but with the missing data filled in.
@@ -145,7 +146,7 @@ s3 <- with(data, tapply(steps, date, sum))
 barplot(s3)
 ```
 
-![plot of chunk unnamed-chunk-10](./PA1_template_files/figure-html/unnamed-chunk-10.png) 
+![plot of chunk unnamed-chunk-9](./PA1_template_files/figure-html/unnamed-chunk-9.png) 
 
 ```r
 s4 <- with(data, tapply(steps, date, mean))
@@ -239,9 +240,9 @@ Sys.setlocale("LC_TIME", lct)
 library(lattice)
 xyplot(data$steps ~ data$interval | data$wend, layout = c(1,2), panel = function(x,y,...) {
 panel.xyplot(x,y, type="l",...)
-panel.abline(h=mean(y, na.rm=T), lty= 2, col= "red")
+panel.abline(h=mean(y), lty= 2, col= "red")
 })
 ```
 
-![plot of chunk unnamed-chunk-12](./PA1_template_files/figure-html/unnamed-chunk-12.png) 
+![plot of chunk unnamed-chunk-11](./PA1_template_files/figure-html/unnamed-chunk-11.png) 
 

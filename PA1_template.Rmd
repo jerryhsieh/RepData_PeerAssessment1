@@ -111,7 +111,7 @@ Sys.setlocale("LC_TIME", lct)
 library(lattice)
 xyplot(data$steps ~ data$interval | data$wend, layout = c(1,2), panel = function(x,y,...) {
 panel.xyplot(x,y, type="l",...)
-panel.abline(h=mean(y, na.rm=T), lty= 2, col= "red")
+panel.abline(h=mean(y), lty= 2, col= "red")
 })
 
 ```
